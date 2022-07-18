@@ -39,7 +39,13 @@ function App() {
                     <Route path="/users/:username" element={ <PrivateRoute/>}>
                       <Route path="/users/:username" element={ <Profile/> }/>
                     </Route>
+
+                    <Route path="/stories/createStory" element={ <PrivateRoute/>}>
+                      <Route path="/stories/createStory" element={ <StoryUpdate/> }/>
+                    </Route>
                     
+
+
                     <Route path="/stories/:id" element={<StoryDetails/>}/>
                     <Route path="/notFound" element={<NotFound/>}/>
 

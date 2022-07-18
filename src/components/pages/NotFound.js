@@ -1,7 +1,9 @@
+import imgNotFound from '../../assets/images/404notFound.png'
+import classes from '../../styles/NotFound.module.css'
 export default function NotFound(){
     return(
-        <div>
-            This is 404 page
+        <div className={classes.notFound}>
+            <img className={classes.image} src={imgNotFound} alt="404" />
         </div>
     )
 }

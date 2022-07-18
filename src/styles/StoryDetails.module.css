@@ -5,7 +5,8 @@
   border:lightslategrey;
   padding: 50px;
   margin: 20px;
-    
+  height: fit-content;
+  white-space: pre-line;
   }
 
 

@@ -55,7 +55,7 @@ export default function SignupForm(){
                required 
                value = {password} onChange = { (e) => setPassword(e.target.value) }/>
              <TextInput type='password'
-               placeholder='EConfirm password'
+               placeholder='Confirm password'
                icon = 'lock_clock' 
                required 
                value = {confirmPassword} onChange = { (e) => setConfirmPassword(e.target.value) }/>

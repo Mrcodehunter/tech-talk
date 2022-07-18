@@ -1,10 +1,9 @@
-import { useAuthContext } from "../../contexts/AuthContext";
+import classes from '../../styles/About.module.css';
 export default function About(){
     // eslint-disable-next-line no-unused-vars
-    const {currentUser} = useAuthContext();
     console.log('about rendered')
     return(
-        <div>
+        <div className={classes.about}>
             This is about page
         </div>
     )

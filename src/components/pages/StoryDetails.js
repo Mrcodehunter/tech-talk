@@ -33,6 +33,8 @@ export default function Story(){
 
   },[getStory,navigate,id])
 
+  console.log(story);
+
     return (
         <div className={classes.storyDetails}>
           {!loading && !error && (
@@ -46,7 +48,7 @@ export default function Story(){
                 </ul>
             </div>
            <br/><br/>
-           <p>{story.description}</p>
+           {story.description}
           </>
         )}
      </div>

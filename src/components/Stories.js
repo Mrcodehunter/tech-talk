@@ -28,7 +28,7 @@ export default function Stories({...props}){
              // eslint-disable-next-line array-callback-return
              stories.map( (story) => {
                 //console.log(story);
-                return <Story story ={story}/>
+                return <Story key = {story.id} story ={story}/>
              })
            }
         </div>

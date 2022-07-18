@@ -1,6 +1,6 @@
 /* button component */
 .button {
-    background: var(--successGreen);
+    background:cornflowerblue;
     color: var(--fontPrimary);
     padding: 0.6rem 1.2rem;
     font-weight: 600;

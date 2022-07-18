@@ -10,7 +10,7 @@ import TextInput from "./TextInput";
 
 export default function LoginForm(){
     
-    const [username,setUSername] = useState('');
+    const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
    
     const [error,setError] = useState();
@@ -43,7 +43,7 @@ export default function LoginForm(){
                placeholder='Enter name'
                icon = 'person' 
                required 
-               value = {username} onChange = { (e) => setUSername(e.target.value) } />
+               value = {username} onChange = { (e) => setUsername(e.target.value) } />
              <TextInput type='password'
                placeholder='Enter password'
                icon = 'lock' 

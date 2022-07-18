@@ -1,7 +1,7 @@
 /* story component */
 .story {
     max-width: 400px;
-    height: fit-content;
+    height:auto;
     background-color: #fff;
     border: 1px solid #e5e5e5;
     padding: 10px;

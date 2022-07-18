@@ -1,0 +1,9 @@
+.storyUpdateForm {
+  width: 100%;
+  font-size: large;
+}
+
+.storyUpdateForm .textArea {
+    width: 100%;
+    height:fit-content;
+  }
