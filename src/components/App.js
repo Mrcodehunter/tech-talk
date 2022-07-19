@@ -5,6 +5,7 @@ import { UserProvider } from '../contexts/UserContext';
 import "../styles/App.css";
 import Layout from "./Layout";
 import About from './pages/About';
+import CreateStory from './pages/CreateStory';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import NotFound from './pages/NotFound';
@@ -12,7 +13,7 @@ import Profile from './pages/Profile';
 import ProfileUpdate from './pages/ProfileUpdate';
 import Signup from "./pages/Signup";
 import StoryDetails from './pages/StoryDetails';
-import StoryUpdate from './pages/StoryUpdate';
+import UpdateStory from './pages/UpdateStory';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
@@ -27,6 +28,7 @@ function App() {
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About/>}/>
+                    <Route path="/users/:username" element={ <Profile/> }/>
 
                     <Route path="/signup" element={<PublicRoute/>} >
                       <Route path="/signup" element={<Signup/>} />
@@ -35,22 +37,23 @@ function App() {
                     <Route path="/login" element={<PublicRoute/>} >
                       <Route path="/login" element={<Login/>} />
                     </Route>
-                    
-                    <Route path="/users/:username" element={ <PrivateRoute/>}>
-                      <Route path="/users/:username" element={ <Profile/> }/>
-                    </Route>
 
                     <Route path="/stories/createStory" element={ <PrivateRoute/>}>
-                      <Route path="/stories/createStory" element={ <StoryUpdate/> }/>
+                      <Route path="/stories/createStory" element={ <CreateStory/> }/>
+                    </Route>
+
+                    <Route path="/story/storyUpdate/:id" element={ <PrivateRoute/>}>
+                      <Route path="/story/storyUpdate/:id" element={ <UpdateStory/> }/>
+                    </Route>
+
+                    <Route path="/users/profileUpdate/:username" element={ <PrivateRoute/>}>
+                      <Route path="/users/profileUpdate/:username" element={ <ProfileUpdate/> }/>
                     </Route>
                     
-
 
                     <Route path="/stories/:id" element={<StoryDetails/>}/>
                     <Route path="/notFound" element={<NotFound/>}/>
 
-                    <Route path="/story/storyUpdate/:id" element={<StoryUpdate/>}/>
-                    <Route path="/users/profileUpdate/:username" element={<ProfileUpdate/>}/>
                   </Routes>
                 </Layout>
               </StoryProvider>
