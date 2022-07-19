@@ -5,7 +5,7 @@ import classes from '../styles/StoryUpdateForm.module.css';
 import Button from './Button';
 import Form from './Form';
 
-export default function StoryUpdateForm(){
+export default function CreateStoryForm(){
 
     console.log('story UpdateForm rendered');
     const [title,setTitle] = useState();

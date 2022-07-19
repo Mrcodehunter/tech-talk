@@ -11,7 +11,7 @@ export function AuthProvider({children}){
 
     console.log('auth context rendered');
 
-    // eslint-disable-next-line no-unused-vars
+    
     const [loading,setLoading] = useState(true);
     const [currentUser, setCurrentUser] = useState();
     const [token,setToken] = useState(null);
@@ -23,9 +23,17 @@ export function AuthProvider({children}){
 
     useEffect(()=>{
 
-       setLoading(false);
+       const verifyToken= async()=>{
+        const response = await api.post('/verify');
+        console.log(response);
+        setCurrentUser(response.data.data.name);
+        setLoading(false);
+       }
 
-    },[currentUser])
+       
+     verifyToken();
+    setLoading(false);
+    },[api,currentUser])
 
     const signup = async(email,password,username)=>{
         

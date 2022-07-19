@@ -27,13 +27,11 @@ export function StoryProvider({children}){
 
     },[])
 
+    
+
     const createStory = async(body)=>{
 
-        const story = await api.post(`/stories`,body,{
-            headers : {
-                token
-            }
-        });
+        const story = await api.post(`/stories`,body);
         return {...story.data.data};
     
     }
@@ -45,6 +43,14 @@ export function StoryProvider({children}){
     
     }
 
+    const getAllStoriesOfAuthor = async(authorName)=>{
+
+        const stories = await api.get(`/${authorName}/stories`);
+        console.log(stories + 'getAuthorsStories');
+        return {...stories.data};
+    
+    }
+
     const getStory = async(id)=>{
 
         const story = await api.get(`/stories/${id}`);
@@ -52,26 +58,19 @@ export function StoryProvider({children}){
     
     }
     const updateStory = async(id,body)=>{
-        const story = await api.put(`/Storys/${id}`,body,{
-            headers : {
-                token
-            }
-        });
+        const story = await api.put(`/stories/${id}`,body);
         return {...story.data.data};
     }
 
-    const deleteStory = async(id,body)=>{
-        const Story = await api.delete(`/Storys/${id}`,body,{
-            headers : {
-                token
-            }
-        });
+    const deleteStory = async(id)=>{
+        const Story = await api.delete(`/stories/${id}`);
         return {...Story.data.data};
     }
 
     const value ={
         createStory,
         getAllStories,
+        getAllStoriesOfAuthor,
         getStory,
         updateStory,
         deleteStory,
