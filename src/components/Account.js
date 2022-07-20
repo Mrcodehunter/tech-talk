@@ -4,7 +4,7 @@ import classes from '../styles/Account.module.css';
 export default function Account(){
     const {currentUser, logout} = useAuthContext();
     console.log('Account rendered')
-    console.log(currentUser);
+    //console.log(currentUser);
 
     return (
         <div className={classes.account}>
