@@ -20,7 +20,6 @@ export default function UpdateStoryForm(){
     const navigate = useNavigate();
     const {updateStory,getStory} = useStoryContext();
     const {id} = useParams();
-    console.log(id);
 
     useEffect(()=>{
         console.log('inside useEffect');

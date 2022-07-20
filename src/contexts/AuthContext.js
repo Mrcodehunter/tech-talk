@@ -51,7 +51,8 @@ export function AuthProvider({children}){
        
      verifyToken();
     setLoading(false);
-    } ,[api,error])
+
+    },[api,currentUser])
 
     const signup = async(email,password,username)=>{
         

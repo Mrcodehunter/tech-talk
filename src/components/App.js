@@ -44,7 +44,7 @@ function App() {
 
                     <Route path="/story/:id/edit" element={ <PrivateRoute/>}>
                       <Route path="/story/:id/edit" element={ <UpdateStory/> }/>
-                    </Route>
+                    </Route>  
 
                     <Route path="/users/profileUpdate/:username" element={ <PrivateRoute/>}>
                       <Route path="/users/profileUpdate/:username" element={ <ProfileUpdate/> }/>

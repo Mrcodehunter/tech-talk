@@ -11,6 +11,7 @@ export default function Profile(){
     const [error,setError] = useState(false);
 
     const {getUser} = useUserContext();
+    const {getAllStoriesOfAuthor} = useStoryContext();
     const {username} = useParams();
     const navigate = useNavigate();
 
@@ -38,7 +39,6 @@ export default function Profile(){
         getUserDetails();
         
     },[username]);
-
     
    
     console.log('profile: ' + user);
@@ -56,6 +56,7 @@ export default function Profile(){
                 
             } 
             </div>
+
         </>
     )
 }
