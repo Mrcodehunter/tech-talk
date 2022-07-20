@@ -1,15 +1,18 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
-import Story from '../components/Story';
 import classes from '../styles/Stories.module.css';
+import Story from './Story';
+
+
+
 export default function Stories({...props}){
 
   const [stories,setStories] = useState();
   const [loading,setLoading] = useState(true);
-  //console.log(props.stories.data)
+  console.log(props.stories)
 
   useEffect(()=>{
-    setStories(props.stories.data);
+    setStories(props.stories);
     setLoading(false);
   },[props.stories])
 

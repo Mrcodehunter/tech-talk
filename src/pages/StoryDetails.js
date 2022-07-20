@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useAuthContext } from "../../contexts/AuthContext";
-import { useStoryContext } from "../../contexts/StoryContext";
-import classes from "../../styles/StoryDetails.module.css";
-import Button from '../Button';
-import Popup from "../Popup";
+// import { useAuthContext } from "../../contexts/AuthContext";
+// import { useStoryContext } from "../../contexts/StoryContext";
+// import classes from "../../styles/StoryDetails.module.css";
+// import Button from '../Button';
+// import Popup from "../Popup";
+
+import Button from "../components/Button";
+import Popup from '../components/Popup';
+import { useAuthContext } from "../contexts/AuthContext";
+import { useStoryContext } from "../contexts/StoryContext";
+import classes from '../styles/StoryDetails.module.css';
 
 export default function Story(){
 
@@ -61,7 +67,7 @@ export default function Story(){
   }
   function handleEdit(){
     console.log('edit ');
-    navigate(`/story/storyUpdate/${id}`)
+    navigate(`/story/${id}/edit`)
   }
 
   console.log(story);

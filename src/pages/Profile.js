@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useStoryContext } from "../../contexts/StoryContext";
-import { useUserContext } from "../../contexts/UserContext";
-import classes from '../../styles/Profile.module.css';
-import Stories from "../Stories";
+// import { useStoryContext } from "../../contexts/StoryContext";
+// import { useUserContext } from "../../contexts/UserContext";
+// import classes from '../../styles/Profile.module.css';
+// import Stories from "../Stories";
+
+import Stories from "../components/Stories";
+import { useStoryContext } from "../contexts/StoryContext";
+import { useUserContext } from "../contexts/UserContext";
+import classes from '../styles/Profile.module.css';
+
+
+
 export default function Profile(){
     
     const [user,setUser] = useState();

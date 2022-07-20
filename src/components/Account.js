@@ -12,7 +12,7 @@ export default function Account(){
            <Link to='/' >Home</Link>
         {currentUser? (
           <>
-            <Link to='/stories/createStory'>post a story</Link>
+            <Link to='/stories/new'>post a story</Link>
             <span className="material-icons-outlined" title="Account">
             account_circle
             </span>

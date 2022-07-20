@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import React, { useContext, useEffect, useState } from "react";
 const AuthContext = React.createContext();
 
@@ -17,7 +16,6 @@ export function AuthProvider({children}){
     
     const [loading,setLoading] = useState(true);
     const [currentUser, setCurrentUser] = useState();
-    const [token,setToken] = useState(null);
 
     const api = axios.create({
         baseURL: 'http://localhost:3001/api/v1/',
@@ -47,15 +45,11 @@ export function AuthProvider({children}){
             password: password,
             name: username
         });
-
-        console.log(response);
         
       setCurrentUser(
         response.data.data.name
        )
-      setToken(
-        Cookies.get('token')
-      )
+     
       
     }
 
@@ -66,28 +60,20 @@ export function AuthProvider({children}){
             password: password
         });
         console.log(response);
-        setCurrentUser(response.data.data.name);
-        setToken(
-            Cookies.get('token')
-          )
+        setCurrentUser(response.data.data.name);   
     }
 
 
     const logout = async() =>{ 
         
-        await api.post('/logout',{},{
-            headers : {
-                token
-            }
-        });
+        await api.post('/logout');
         setCurrentUser(null);
-        setToken(null);
+       
     }
     const value ={
         signup,
         login,
         logout,
-        token,
         currentUser
     }
 

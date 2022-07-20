@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useStoryContext } from '../../contexts/StoryContext.js';
-import Stories from '../Stories.js';
+//import { useStoryContext } from '../../contexts/StoryContext.js';
+import { useStoryContext } from '../contexts/StoryContext.js';
+//import Stories from '../Stories.js';
+//import Stories from '../components/Stories.js';
+import PaginatedItems from '../components/PaginatedItems.js';
 export default function Home(){
     const {getAllStories} = useStoryContext();
     const [stories, setStories] = useState();
@@ -35,7 +38,8 @@ export default function Home(){
        <div>
          {
             !loading && !error && (
-            <Stories stories = {stories} />
+            // <Stories stories = {stories} />
+              <PaginatedItems itemsPerPage={1} items={stories} />
 
         )}
         
@@ -43,40 +47,3 @@ export default function Home(){
     )
 }
 
-/*
-auth context rendered
-auth context rendered
-layout rendered
-Nav rendered
-Account rendered
-Home rendered
-*/
-
-/*
-auth context rendered
-auth context rendered
-layout rendered
-Nav rendered
-Account rendered
-*/
-
-/*
-auth context rendered
-auth context rendered
-layout rendered
-Nav rendered
-Account rendered
-auth context rendered
-Account rendered
-Home rendered
-auth context rendered
-*/
-
-/*
-auth context rendered
-auth context rendered
-layout rendered
-Nav rendered
-Account rendered
-Home rendered
-*/
