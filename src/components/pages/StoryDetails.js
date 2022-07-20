@@ -61,7 +61,7 @@ export default function Story(){
   }
   function handleEdit(){
     console.log('edit ');
-    navigate(`/story/storyUpdate/${id}`)
+    navigate(`/story/${id}/edit`)
   }
 
   console.log(story);

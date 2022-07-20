@@ -38,12 +38,12 @@ function App() {
                       <Route path="/login" element={<Login/>} />
                     </Route>
 
-                    <Route path="/stories/createStory" element={ <PrivateRoute/>}>
-                      <Route path="/stories/createStory" element={ <CreateStory/> }/>
+                    <Route path="/stories/new" element={ <PrivateRoute/>}>
+                      <Route path="/stories/new" element={ <CreateStory/> }/>
                     </Route>
 
-                    <Route path="/story/storyUpdate/:id" element={ <PrivateRoute/>}>
-                      <Route path="/story/storyUpdate/:id" element={ <UpdateStory/> }/>
+                    <Route path="/story/:id/edit" element={ <PrivateRoute/>}>
+                      <Route path="/story/:id/edit" element={ <UpdateStory/> }/>
                     </Route>
 
                     <Route path="/users/profileUpdate/:username" element={ <PrivateRoute/>}>
