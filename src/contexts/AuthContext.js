@@ -1,8 +1,5 @@
 import axios from 'axios';
-<<<<<<< HEAD
 import Cookies from 'js-cookie';
-=======
->>>>>>> master
 import React, { useContext, useEffect, useState } from "react";
 const AuthContext = React.createContext();
 
@@ -14,27 +11,34 @@ export function AuthProvider({children}){
 
     console.log('auth context rendered');
 
-<<<<<<< HEAD
+
     // eslint-disable-next-line no-unused-vars
-=======
->>>>>>> master
+
+    
     const [loading,setLoading] = useState(true);
     const [currentUser, setCurrentUser] = useState();
     const [token,setToken] = useState(null);
 
     const api = axios.create({
         baseURL: 'http://localhost:3001/api/v1/',
-<<<<<<< HEAD
+
         withCredentials: true,
-=======
->>>>>>> master
+
       });
 
     useEffect(()=>{
 
-       setLoading(false);
+       const verifyToken= async()=>{
+        const response = await api.post('/verify');
+        console.log(response);
+        setCurrentUser(response.data.data.name);
+        setLoading(false);
+       }
 
-    },[currentUser])
+       
+     verifyToken();
+    setLoading(false);
+    },[api,currentUser])
 
     const signup = async(email,password,username)=>{
         

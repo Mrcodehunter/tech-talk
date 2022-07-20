@@ -1,15 +1,10 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from "react";
-<<<<<<< HEAD
 import { useAuthContext } from './AuthContext';
 const StoryContext = React.createContext();
 
 
-=======
-const StoryContext = React.createContext();
-
->>>>>>> master
 export function useStoryContext(){
     return useContext(StoryContext);
 }
@@ -19,18 +14,11 @@ export function StoryProvider({children}){
     console.log('Story context rendered');
 
     const [loading,setLoading] = useState(true);
-<<<<<<< HEAD
     const {token} = useAuthContext();
 
     const api = axios.create({
         baseURL: 'http://localhost:3001/api/v1/',
         withCredentials: true,
-=======
-    
-
-    const api = axios.create({
-        baseURL: 'http://localhost:3001/api/v1/',
->>>>>>> master
       });
 
     useEffect(()=>{
@@ -39,17 +27,12 @@ export function StoryProvider({children}){
 
     },[])
 
+    
+
     const createStory = async(body)=>{
 
-<<<<<<< HEAD
-        const story = await api.post(`/stories`,body,{
-            headers : {
-                token
-            }
-        });
-=======
+
         const story = await api.post(`/stories`,body);
->>>>>>> master
         return {...story.data.data};
     
     }
@@ -57,6 +40,14 @@ export function StoryProvider({children}){
     const getAllStories = async()=>{
 
         const stories = await api.get(`/stories`);
+        return {...stories.data};
+    
+    }
+
+    const getAllStoriesOfAuthor = async(authorName)=>{
+
+        const stories = await api.get(`/${authorName}/stories`);
+        console.log(stories + 'getAuthorsStories');
         return {...stories.data};
     
     }
@@ -72,14 +63,17 @@ export function StoryProvider({children}){
         return {...story.data.data};
     }
 
-    const deleteStory = async(id,body)=>{
-        const Story = await api.delete(`/Stories/${id}`,body);
+ 
+
+    const deleteStory = async(id)=>{
+        const Story = await api.delete(`/stories/${id}`);
         return {...Story.data.data};
     }
 
     const value ={
         createStory,
         getAllStories,
+        getAllStoriesOfAuthor,
         getStory,
         updateStory,
         deleteStory,

@@ -28,6 +28,7 @@ export function UserProvider({children}){
     const getUser = async(username)=>{
 
         const user = await api.get(`/users/${username}`);
+        console.log('getUSer: '+ {...user.data.data});
         return {...user.data.data};
     
     }
