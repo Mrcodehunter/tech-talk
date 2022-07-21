@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 // import { useStoryContext } from "../../contexts/StoryContext";
@@ -5,9 +6,10 @@ import { useNavigate, useParams } from "react-router-dom";
 // import classes from '../../styles/Profile.module.css';
 // import Stories from "../Stories";
 
-import Stories from "../components/Stories";
+import PaginatedItems from '../components/PaginatedItems';
 import { useStoryContext } from "../contexts/StoryContext";
 import { useUserContext } from "../contexts/UserContext";
+//import classesPagination from '../styles/Pagination.module.css';
 import classes from '../styles/Profile.module.css';
 
 
@@ -34,6 +36,11 @@ export default function Profile(){
                  const userData = await getUser(username);
                  setUser(userData);
                  console.log('userData :' + userData);
+
+                 const response = await getAllStoriesOfAuthor(username);
+                 console.log('Aurhor stories: '+ response.data);
+                 setStories(response);
+
                  setLoading(false);
     
             }catch(err){
@@ -47,53 +54,32 @@ export default function Profile(){
         }
         getUserDetails();
         
-    },[username,navigate,getUser]);
+    },[username]);
 
     
-    useEffect(()=>{
 
-        async function getAllStoriesSpecifiedByAuthor(){
-            try{
-                    setLoading(true);
-                    const response = await getAllStoriesOfAuthor(user);
-                    console.log('Aurhor stories: '+ response);
-                    setStories(response);
-                    setLoading(false);
-               }catch(err){
-                    console.error(err);
-                    setLoading(false);
-                    setError(err.response.data.message);
-               }
-           }
-           getAllStoriesSpecifiedByAuthor();
-
-    },[getAllStoriesOfAuthor,user])
-   
-    
-    
-   
     console.log('profile: ' + user);
+    //console.log(stories.data);
     return(
-        <>
+        <div >
             <div className={classes.profile}>
-            {!loading && !error && (
-                <div className={classes.profileInformation}> 
-                <p> <h3>{user.name}</h3><br/>
-                    Email : {user.email}</p>
+                {!loading && !error && (
+                    <div className={classes.profileInformation}> 
+                    <p> <h3>{user.name}</h3><br/>
+                        Email : {user.email}</p>
+                    </div>
+                    
+                    ) 
+                }
                 </div>
-                
-                ) 
-            }
-            </div>
-            <div>
+                <div >
+                {
+                    !loading && !error && (
+                    <PaginatedItems itemsPerPage={8} items={stories} />
 
-            {!loading && !error && user &&(
-                <Stories stories = {stories} />
+                )}
                 
-                ) 
-            }
-                 
             </div>
-        </>
+        </div>
     )
 }

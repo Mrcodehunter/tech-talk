@@ -50,11 +50,11 @@ export default function CreateStoryForm(){
                         value = {title} onChange = { (e) => setTitle(e.target.value) } />
                     <p>Description</p>
                     <textarea 
-                        rows = '9'
+                        rows = '20'
                         type = 'text' 
                         required 
                         value = {description} onChange = { (e) => setDescription(e.target.value) } />
-                    
+                    <br/>
                     <Button disabled = {loading} type = 'submit'>Post</Button>
                     {error && <p className='error'>{error}</p>}
             </Form>

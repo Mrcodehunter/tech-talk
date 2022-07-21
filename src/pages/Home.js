@@ -38,8 +38,7 @@ export default function Home(){
        <div>
          {
             !loading && !error && (
-            // <Stories stories = {stories} />
-              <PaginatedItems itemsPerPage={1} items={stories} />
+              <PaginatedItems itemsPerPage={8} items={stories} />
 
         )}
         

@@ -13,11 +13,13 @@ export default function Story({...props}){
               <b>{props.story.title}</b>
               <p>{props.story.description}</p>
             </span>
+            
             </Link>
             <div className={classes.qmeta}>
               <p><Link to={`/users/${props.story.author}`}>{props.story.author}</Link></p>
               {/* <p>Score : Not taken yet</p>*/}
             </div>
+            
           </div>
         
     )

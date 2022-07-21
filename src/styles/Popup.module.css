@@ -13,8 +13,8 @@
   .box {
     position: relative;
     width: 30%;
-    margin: 0 auto;
-    height: auto;
+    margin: auto ;
+    height: 200px;
     max-height: 70vh;
     margin-top: calc(100vh - 85vh - 20px);
     background: #fff;
@@ -23,6 +23,9 @@
     border: 1px solid #999;
     overflow: auto;
     justify-content: center;
+    text-align: center;
+    font-size:x-large;
+    font:bold;
   }
    
   .closeIcon {
@@ -45,9 +48,11 @@
     height: 100px;
     list-style: none;
     display:flex;
-    justify-content:center;
-
+    justify-content:space-evenly;
+    margin-left: 8%;
     align-items: center;
+    position: relative;
+    top: 30%;
   }
 
   .popup ul:first-child {

@@ -4,19 +4,6 @@ import classes from '../styles/Pagination.module.css';
 import Stories from "./Stories";
 
 
-// function Items({ showItems }) {
-//     return (
-//       <>
-//         {showItems &&
-//           showItems.map((item) => (
-//             <div>
-//               <h3>Item #{item}</h3>
-//             </div>
-//           ))}
-//       </>
-//     );
-//   }
-
 export default function PaginatedItems({itemsPerPage,items}){
 
   const [currentItems, setCurrentItems] = useState(null);
@@ -55,11 +42,11 @@ console.log('start')
         <ReactPaginate
         className={classes.pagination}
         breakLabel="..."
-        // nextLabel=" >>"
+        nextLabel=">>"
+        previousLabel="<<"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={pageCount}
-        // previousLabel="<< "
         renderOnZeroPageCount={null}
       />
       </div>

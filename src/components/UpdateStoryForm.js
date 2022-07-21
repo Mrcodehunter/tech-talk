@@ -76,11 +76,11 @@ export default function UpdateStoryForm(){
                         value = {title} onChange = { (e) => setTitle(e.target.value) } defaultValue={story.title}></textarea>
                     <p>Description</p>
                     <textarea 
-                        rows = '9'
+                        rows = '20'
                         type = 'text' 
                         required 
                         value = {description} onChange = { (e) => setDescription(e.target.value) } defaultValue={story.description}></textarea> 
-                    
+                    <br/>
                     <Button disabled = {loading} type = 'submit'>Update</Button>
                     {error && <p className='error'>{error}</p>}
             </Form>
