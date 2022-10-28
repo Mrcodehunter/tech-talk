@@ -27,7 +27,7 @@ export default function CreateStoryForm(){
             console.log('call started');
             const response = await createStory({
                 title,
-                description
+                body:description
             });
             console.log(response);
             navigate('/');
@@ -48,6 +48,7 @@ export default function CreateStoryForm(){
                         required 
                         rows = '3'
                         value = {title} onChange = { (e) => setTitle(e.target.value) } />
+                    <br/>
                     <p>Description</p>
                     <textarea 
                         rows = '20'

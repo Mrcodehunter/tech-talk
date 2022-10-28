@@ -11,13 +11,12 @@ export default function Story({...props}){
             <img src={imgStory1} alt="First Story" />
             <span >
               <b>{props.story.title}</b>
-              <p>{props.story.description}</p>
+              <p>{props.story.body}</p>
             </span>
             
             </Link>
             <div className={classes.qmeta}>
-              <p><Link to={`/users/${props.story.author}`}>{props.story.author}</Link></p>
-              {/* <p>Score : Not taken yet</p>*/}
+              <p><Link to={`/users/${props.story.authorName}`}>{props.story.authorName}</Link></p>
             </div>
             
           </div>

@@ -33,11 +33,13 @@
     display: flex;
     justify-content: space-between;
     padding-right: 6px;
+    
   }
   
   .story .qmeta p {
     font-size: 15px;
     font-weight: 400;
+    justify-content: flex-start;
   }
   
   @media only screen and (max-width: 600px) {

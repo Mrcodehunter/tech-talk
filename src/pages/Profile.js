@@ -21,10 +21,14 @@ export default function Profile(){
     const [loading,setLoading] = useState(true);
     const [error,setError] = useState(false);
 
-    const {getUser} = useUserContext();
+    const {getUser,getUserByUsername} = useUserContext();
     const {getAllStoriesOfAuthor} = useStoryContext();
     const {username} = useParams();
     const navigate = useNavigate();
+
+    const [pageNumber,setPageNumber] = useState(1);
+    const [pageSize, setPageSize] = useState(2);
+    const [totalPages, setTotalPages] = useState();
 
     console.log('username: '+username)
     
@@ -33,13 +37,18 @@ export default function Profile(){
 
         async function getUserDetails(){
             try{
-                 const userData = await getUser(username);
+                 const userData = await getUserByUsername(username);
                  setUser(userData);
-                 console.log('userData :' + userData);
+                 console.log('userData :');
+                 console.log( userData);
 
-                 const response = await getAllStoriesOfAuthor(username);
-                 console.log('Aurhor stories: '+ response.data);
-                 setStories(response);
+                 const response = await getAllStoriesOfAuthor(username,pageNumber);
+                 console.log('Aurhor stories: ');
+                 console.log(response.data);
+                 setStories(response.data.data);
+                 setPageNumber(response.data.pageNumber);
+                 setPageSize(response.data.pageSize);
+                 setTotalPages(response.data.totalPages);
 
                  setLoading(false);
     
@@ -54,9 +63,9 @@ export default function Profile(){
         }
         getUserDetails();
         
-    },[username]);
+    },[username,pageNumber]);
 
-    
+   
 
     console.log('profile: ' + user);
     //console.log(stories.data);
@@ -65,7 +74,7 @@ export default function Profile(){
             <div className={classes.profile}>
                 {!loading && !error && (
                     <div className={classes.profileInformation}> 
-                    <p> <h3>{user.name}</h3><br/>
+                    <p> {user.name}<br/>
                         Email : {user.email}</p>
                     </div>
                     
@@ -75,7 +84,7 @@ export default function Profile(){
                 <div >
                 {
                     !loading && !error && (
-                    <PaginatedItems itemsPerPage={8} items={stories} />
+                        <PaginatedItems itemsPerPage={pageSize} items={stories} totalPages={totalPages} changePageNumber={setPageNumber}/>
 
                 )}
                 

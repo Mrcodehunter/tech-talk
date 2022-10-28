@@ -10,20 +10,31 @@ export default function Home(){
     const [stories, setStories] = useState();
     const [loading,setLoading] = useState(true);
     const [error, setError] = useState();
+    const [pageNumber,setPageNumber] = useState(1);
+    const [pageSize, setPageSize] = useState(6);
+    const [totalPages, setTotalPages] = useState();
+
+
     const navigate = useNavigate();
     console.log("Home rendered");
     useEffect(()=>{
         const getStories = async()=>{
 
             try{
-                const response = await getAllStories();
-                //console.log(response);
-                setStories(response);
+                const response = await getAllStories(pageNumber);
+                console.log(response.data);
+                console.log("response--")
+
+                setStories(response.data.data);
+                setPageNumber(response.data.pageNumber);
+                setPageSize(response.data.pageSize);
+                setTotalPages(response.data.totalPages);
+
                 setLoading(false);
             }catch(err){
                 console.error(err);
                 setLoading(false);
-                setError(err.response.data.message);
+                setError(err.response.data);
                 if (err.response.status === 404) {
                   navigate('/notfound');
                 }
@@ -32,13 +43,16 @@ export default function Home(){
 
         }
         getStories();
-    },[getAllStories,navigate])
+    },[getAllStories,navigate,pageNumber])
+
+   
     //console.log(stories);
     return (
        <div>
          {
             !loading && !error && (
-              <PaginatedItems itemsPerPage={8} items={stories} />
+               <PaginatedItems itemsPerPage={pageSize} items={stories} totalPages={totalPages} changePageNumber={setPageNumber}/>
+           // <Stories stories = {stories} />
 
         )}
         

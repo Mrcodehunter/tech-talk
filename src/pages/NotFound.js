@@ -1,6 +1,6 @@
 //import imgNotFound from '../../assets/images/404notFound.png'
 //import classes from '../../styles/NotFound.module.css'
-import imgNotFound from '../assets/images/404notFound.png'
+import imgNotFound from '../assets/images/404-error-page-not-found.jpg'
 import classes from '../styles/NotFound.module.css'
 export default function NotFound(){
     return(

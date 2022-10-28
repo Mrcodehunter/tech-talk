@@ -15,9 +15,9 @@ export function StoryProvider({children}){
 
     const [loading,setLoading] = useState(true);
     const {token} = useAuthContext();
-
+    const [pageSize, setPageSize] = useState(3);
     const api = axios.create({
-        baseURL: 'http://localhost:3001/api/v1/',
+        baseURL: 'https://localhost:7057/api/Blog/',
         withCredentials: true,
       });
 
@@ -32,42 +32,55 @@ export function StoryProvider({children}){
     const createStory = async(body)=>{
 
 
-        const story = await api.post(`/stories`,body);
-        return {...story.data.data};
+        const story = await api.post("",body,{
+            headers:{
+                Authorization : `bearer ${localStorage.getItem('Token')}`
+            }
+        });
+        console.log(story);
+        return {...story};
     
     }
 
-    const getAllStories = async()=>{
+    const getAllStories = async(pageNumber)=>{
 
-        const stories = await api.get(`/stories`);
-        return {...stories.data};
+        const stories = await api.get(`?pageNumber=${pageNumber}&pageSize=${pageSize}`);
+        return {...stories};
     
     }
 
-    const getAllStoriesOfAuthor = async(authorName)=>{
+    const getAllStoriesOfAuthor = async(username,pageNumber)=>{
 
-        const stories = await api.get(`/${authorName}/stories`);
+        const stories = await api.get(`/author/${username}?pageNumber=${pageNumber}&pageSize=${pageSize}`);
         console.log(stories + 'getAuthorsStories');
-        return {...stories.data};
+        return {...stories};
     
     }
 
     const getStory = async(id)=>{
 
-        const story = await api.get(`/stories/${id}`);
-        return {...story.data.data};
+        const story = await api.get(`/${id}`);
+        return {...story};
     
     }
     const updateStory = async(id,body)=>{
-        const story = await api.put(`/Stories/${id}`,body);
-        return {...story.data.data};
+        const story = await api.put(`/${id}`,body,{
+            headers:{
+                Authorization : `bearer ${localStorage.getItem('Token')}`
+            }
+        });
+        return {...story};
     }
 
  
 
     const deleteStory = async(id)=>{
-        const Story = await api.delete(`/stories/${id}`);
-        return {...Story.data.data};
+        const Story = await api.delete(`/${id}`,{
+            headers:{
+                Authorization : `bearer ${localStorage.getItem('Token')}`
+            }
+        });
+        return {...Story};
     }
 
     const value ={

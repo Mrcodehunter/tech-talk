@@ -1,21 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-// import { AuthProvider } from '../contexts/AuthContext';
-// import { StoryProvider } from '../contexts/StoryContext';
-// import { UserProvider } from '../contexts/UserContext';
-// import "../styles/App.css";
-// import Layout from "./Layout";
-// import About from './pages/About';
-// import CreateStory from './pages/CreateStory';
-// import Home from "./pages/Home";
-// import Login from "./pages/Login";
-// import NotFound from './pages/NotFound';
-// import Profile from './pages/Profile';
-// import ProfileUpdate from './pages/ProfileUpdate';
-// import Signup from "./pages/Signup";
-// import StoryDetails from './pages/StoryDetails';
-// import UpdateStory from './pages/UpdateStory';
-// import PrivateRoute from './PrivateRoute';
-// import PublicRoute from './PublicRoute';
+
 
 import Layout from '../components/Layout';
 import PrivateRoute from '../components/PrivateRoute';
@@ -44,7 +28,7 @@ function App() {
             <StoryProvider>
               <Layout>
                   <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Home/>} />
                     <Route path="/about" element={<About/>}/>
                     <Route path="/users/:username" element={ <Profile/> }/>
 

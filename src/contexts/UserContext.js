@@ -15,7 +15,7 @@ export function UserProvider({children}){
     
 
     const api = axios.create({
-        baseURL: 'http://localhost:3001/api/v1/',
+        baseURL: 'https://localhost:7057/api/User',
         withCredentials: true,
       });
 
@@ -25,25 +25,41 @@ export function UserProvider({children}){
 
     },[])
 
-    const getUser = async(username)=>{
+    const getUser = async(id)=>{
 
-        const user = await api.get(`/users/${username}`);
-        console.log('getUSer: '+ {...user.data.data});
-        return {...user.data.data};
+        const user = await api.get(`/${id}`);
+        console.log('getUSer: '+ {...user.data});
+        return {...user.data};
     
     }
-    const updateUser = async(username,body)=>{
-        const user = await api.put(`/users/${username}`,body);
-        return {...user.data.data};
+    const getUserByUsername = async(username)=>{
+
+        const user = await api.get(`/username/${username}`);
+        console.log('getUSer: '+ {...user.data});
+        return {...user.data};
+    
+    }
+    const updateUser = async(id,body,)=>{
+        const user = await api.put(`/${id}`,body,{
+            headers:{
+                Authorization : `bearer ${localStorage.getItem('Token')}`
+            }
+        });
+        return {...user.data};
     }
 
     const deleteUser = async(username,body)=>{
-        const user = await api.delete(`/users/${username}`,body);
-        return {...user.data.data};
+        const user = await api.delete(`/${username}`,body,{
+            headers:{
+                Authorization : `bearer ${localStorage.getItem('Token')}`
+            }
+        });
+        return {...user.data};
     }
 
     const value ={
         getUser,
+        getUserByUsername,
         updateUser,
         deleteUser,
     }

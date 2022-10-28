@@ -4,27 +4,28 @@ import classes from '../styles/Account.module.css';
 export default function Account(){
     const {currentUser, logout} = useAuthContext();
     console.log('Account rendered')
-    //console.log(currentUser);
+    console.log(currentUser);
 
     return (
         <div className={classes.account}>
            <Link to='/about'>About</Link>
            <Link to='/' >Home</Link>
-        {currentUser? (
-          <>
-            <Link to='/stories/new'>post a story</Link>
-            <span className="material-icons-outlined" title="Account">
-            account_circle
-            </span>
-            <Link to={`/users/${currentUser}`} activeclassname="current">{currentUser}</Link>
-            <span className="material-icons-outlined" title="Logout" onClick={logout}> logout </span>
-          </>
-        ) : (
-          <>
-            <Link to="/signup">signup</Link>
-            <Link to="/login">login</Link>
-          </>
-        )}
+            {currentUser? (
+              <>
+                <Link to='/stories/new'>create a blog</Link>
+                {/* <Button onClick={<Link to='/stories/new'/>}>Post a story</Button> */}
+                <span className="material-icons-outlined" title="Account">
+                account_circle
+                </span>
+                <Link to={`/users/${currentUser}`} activeclassname="current">{currentUser}</Link>
+                <span className="material-icons-outlined" title="Logout" onClick={logout}> logout </span>
+              </>
+            ) : (
+              <>
+                <Link to="/signup">signup</Link>
+                <Link to="/login">login</Link>
+              </>
+            )}
       </div>
     )
     

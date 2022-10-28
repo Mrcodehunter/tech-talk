@@ -9,7 +9,8 @@ import TextInput from "./TextInput";
 
 export default function SignupForm(){
 
-    const [username,setUSername] = useState('');
+    const [name, setName] = useState('');
+    const [username,setUsername] = useState('');
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [confirmPassword,setConfirmPassword] = useState('');
@@ -27,7 +28,7 @@ export default function SignupForm(){
         try{
             setError('');
             setLoading(true);
-            await signup(email,password,username);
+            await signup(name,email,password,username);
             navigate('/');
         }catch(err){
           console.log(err);
@@ -39,11 +40,16 @@ export default function SignupForm(){
 
     return(
         <Form className={`${classes.signupForm} form`} onSubmit={handleSubmit} >
+            <TextInput type='text'
+                placeholder='Enter name'
+                icon='person'
+                required
+                value={name} onChange={(e) => setName(e.target.value)} />
              <TextInput type='text'
-               placeholder='Enter name'
+               placeholder='Enter username'
                icon = 'person' 
                required 
-               value = {username} onChange = { (e) => setUSername(e.target.value) } />
+               value = {username} onChange = { (e) => setUsername(e.target.value) } />
              <TextInput type='text'
                placeholder='Enter email'
                icon = 'alternate_email' 

@@ -28,6 +28,10 @@ export default function UpdateStoryForm(){
                 const storyDetails = await getStory(id);
                 console.log(storyDetails);
                 setStory(storyDetails);
+                
+                setTitle(storyDetails.data.title);
+                setDescription(storyDetails.data.body);
+
                 setLoading(false);
           }catch(err){
                console.error(err);
@@ -53,7 +57,7 @@ export default function UpdateStoryForm(){
             console.log('call started');
             const response = await updateStory(id,{
                 title,
-                description
+                body:description
             });
             console.log(response);
             navigate(`/stories/${id}`);
@@ -73,13 +77,15 @@ export default function UpdateStoryForm(){
                         fontSize = '50px'
                         required 
                         rows = '3'
-                        value = {title} onChange = { (e) => setTitle(e.target.value) } defaultValue={story.title}></textarea>
+                        value = {title} onChange = { (e) => setTitle(e.target.value) } ></textarea>
+                    <br/>
                     <p>Description</p>
                     <textarea 
-                        rows = '20'
                         type = 'text' 
+                        rows = '20'
+                        fontSize = '50px'
                         required 
-                        value = {description} onChange = { (e) => setDescription(e.target.value) } defaultValue={story.description}></textarea> 
+                        value = {description} onChange = { (e) => setDescription(e.target.value) } ></textarea> 
                     <br/>
                     <Button disabled = {loading} type = 'submit'>Update</Button>
                     {error && <p className='error'>{error}</p>}
@@ -88,3 +94,4 @@ export default function UpdateStoryForm(){
         </div>
     )
 }
+//defaultValue={story.data.title}defaultValue={story.data.body}

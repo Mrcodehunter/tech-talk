@@ -8,6 +8,18 @@
     margin-right: 30px;
     font-size: 12px;
   }
+  /* .account ul {
+    width: 50%;
+    height: 60px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .account ul:first-child {
+    align-items: ;
+  } */
   
   .account > span:last-child {
     cursor: pointer;

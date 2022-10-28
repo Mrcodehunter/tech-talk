@@ -4,6 +4,7 @@
     display: flex;
 }
 .image {
-    height:100%;
-    width: fit-content;
+    height:525px;
+    width: 1400px;
+    margin-left: 0%;
 }

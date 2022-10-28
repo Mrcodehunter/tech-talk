@@ -1,7 +1,8 @@
 /* nav component */
 .nav {
     display: flex;
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-color:aliceblue;
     position: fixed;
     left: 0;
     right: 0;
@@ -21,6 +22,9 @@
   
   .nav ul:first-child {
     margin-left: 30px;
+  }
+  .nav ul:last-child {
+    align-content: center;
   }
   
   .nav ul li {

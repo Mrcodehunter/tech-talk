@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from 'react-router-dom';
 // import { useAuthContext } from "../../contexts/AuthContext";
@@ -15,7 +16,7 @@ import classes from '../styles/StoryDetails.module.css';
 export default function Story(){
 
   const [story,setStory] = useState();
-
+  const [tmp,setTmp] = useState();
   const [loading,setLoading] = useState(true);
   const [error,setError] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +30,8 @@ export default function Story(){
     async function getStoryDetails(){
       try{ const storyDetails = await getStory(id);
        setStory(storyDetails);
+       console.log(storyDetails);
+       console.log("storyDetails");
        setLoading(false);
       }catch(err){
            console.error(err);
@@ -78,21 +81,21 @@ export default function Story(){
           {!loading && !error && story && (
           <>
             <div className={classes.storyDetailsTitle}>
-                <h1>{story.title}</h1>
+                <h1>{story.data.title}</h1>
                 <ul>
                   <li>
-                    Author : <Link to={`/users/${story.author}`} > {story.author} </Link>
+                    Author : <Link to={`/users/${story.data.authorName}`} > {story.data.authorName} </Link>
                   </li>
-                  { story.author === currentUser &&(
+                  { story.data.authorName === currentUser &&(
                     <li><Button onClick = {handleEdit}> Edit Story </Button></li>
                   )}
-                  { story.author === currentUser &&(
+                  { story.data.authorName === currentUser &&(
                     <li><Button onClick = {togglePopup}> Delete Story </Button></li>
                   )}
                 </ul>
             </div>
            <br/><br/>
-           {story.description}
+           {story.data.body}
            
           </>
         )}
